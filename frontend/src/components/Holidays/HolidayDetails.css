@@ -1,0 +1,140 @@
+.holiday-section {
+    margin-top: 50px;
+    padding: 0 20px;
+}
+
+/* HEADER SECTION */
+.section-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 35px;
+}
+
+.section-header h2 {
+    font-size: 32px;
+    color: #111827;
+    font-weight: 800;
+    margin-bottom: 8px;
+}
+
+.section-header p {
+    color: #64748b;
+    font-size: 16px;
+}
+
+.section-header button {
+    border: none;
+    padding: 12px 24px;
+    border-radius: 14px;
+    background: #f1f5f9;
+    color: #4f46e5;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.3s ease;
+}
+
+.section-header button:hover {
+    background: #e2e8f0;
+}
+
+/* HOLIDAY GRID */
+.holiday-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+}
+
+/* CARD DESIGN */
+.holiday-card {
+    background: white;
+    border-radius: 28px;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    border: 1px solid #f1f5f9;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.holiday-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.holiday-card img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.holiday-card:hover img {
+    transform: scale(1.05);
+}
+
+.holiday-content {
+    padding: 24px;
+}
+
+.holiday-content h3 {
+    font-size: 20px;
+    color: #111827;
+    margin-bottom: 16px;
+    font-weight: 700;
+}
+
+.holiday-info {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 24px;
+}
+
+.holiday-info p {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #64748b;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* FOOTER */
+.holiday-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 16px;
+    border-top: 1px solid #f1f5f9;
+}
+
+.rating {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #f59e0b;
+    font-weight: 700;
+    font-size: 15px;
+}
+
+.holiday-footer button {
+    border: none;
+    padding: 10px 20px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #2563eb, #4f46e5);
+    color: white;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.3s ease;
+}
+
+.holiday-footer button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 15px rgba(79, 70, 229, 0.3);
+}
+
+@media(max-width: 768px) {
+    .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+    }
+}

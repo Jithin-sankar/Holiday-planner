@@ -1,0 +1,299 @@
+/* WRAPPER */
+.planner-footer-wrapper {
+    background-color: #ffffff;
+    border-top: 1px solid #e2e8f0;
+    font-family: 'Inter', system-ui, sans-serif;
+    color: #475569;
+}
+
+/* TOP CTA BANNER */
+.footer-cta {
+    max-width: 1250px;
+    margin: 0 auto;
+    padding: 60px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.cta-content h2 {
+    font-size: 32px;
+    color: #0f172a;
+    font-weight: 800;
+    margin-bottom: 8px;
+    letter-spacing: -0.5px;
+}
+
+.cta-content p {
+    font-size: 16px;
+    color: #64748b;
+}
+
+.cta-btn {
+    background: linear-gradient(135deg, #4f46e5, #7c3aed);
+    color: white;
+    border: none;
+    padding: 16px 32px;
+    border-radius: 14px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(79, 70, 229, 0.3);
+    transition: 0.3s ease;
+    white-space: nowrap;
+}
+
+.cta-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(79, 70, 229, 0.4);
+}
+
+/* MAIN FOOTER GRID */
+.footer-main {
+    max-width: 1250px;
+    margin: 0 auto;
+    padding: 70px 20px;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr; /* Brand gets double space */
+    gap: 50px;
+}
+
+/* BRAND COLUMN */
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 26px;
+    font-weight: 800;
+    color: #0f172a;
+    margin-bottom: 16px;
+}
+
+
+
+.brand-desc {
+    line-height: 1.6;
+    margin-bottom: 24px;
+    max-width: 320px;
+}
+
+/* CONTACT INFO */
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 30px;
+}
+
+.contact-info p {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #0f172a;
+}
+
+.contact-icon {
+    color: #4f46e5;
+    font-size: 16px;
+}
+
+/* APP DOWNLOAD BUTTONS */
+.app-download-buttons {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.app-btn {
+    background: #0f172a;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 8px 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.app-btn:hover {
+    background: #1e293b;
+    transform: translateY(-2px);
+}
+
+.app-icon {
+    font-size: 24px;
+}
+
+.app-btn-text {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.app-btn-text span {
+    font-size: 10px;
+    opacity: 0.8;
+}
+
+.app-btn-text strong {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* LINK COLUMNS */
+.footer-col h3 {
+    color: #0f172a;
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 24px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.footer-col ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.footer-col a {
+    color: #64748b;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    transition: 0.2s;
+}
+
+.footer-col a:hover {
+    color: #4f46e5;
+    padding-left: 6px;
+}
+
+/* BOTTOM BAR */
+.footer-bottom {
+    border-top: 1px solid #f1f5f9;
+    background: #f8fafc;
+    padding: 24px 20px;
+}
+
+.footer-bottom-content {
+    max-width: 1250px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+/* LEFT UTILS (Copyright + Selectors) */
+.footer-left-utils {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+}
+
+.footer-left-utils p {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.locale-selectors {
+    display: flex;
+    gap: 12px;
+}
+
+.footer-select {
+    background: white;
+    border: 1px solid #cbd5e1;
+    color: #334155;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    outline: none;
+}
+
+/* PAYMENTS */
+.footer-payments {
+    display: flex;
+    gap: 12px;
+    font-size: 28px;
+    color: #94a3b8;
+}
+
+.footer-payments svg {
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+.footer-payments svg:hover {
+    color: #475569;
+}
+
+/* SOCIALS */
+.footer-socials {
+    display: flex;
+    gap: 16px;
+}
+
+.social-icon {
+    background: white;
+    border: 1px solid #e2e8f0;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: #64748b;
+    font-size: 16px;
+    transition: 0.2s;
+}
+
+.social-icon:hover {
+    background: #4f46e5;
+    color: white;
+    border-color: #4f46e5;
+    transform: translateY(-3px);
+}
+
+/* RESPONSIVE DESIGN */
+@media(max-width: 1024px) {
+    .footer-main {
+        grid-template-columns: 1fr 1fr;
+    }
+    .footer-cta {
+        flex-direction: column;
+        text-align: center;
+        gap: 24px;
+    }
+}
+
+@media(max-width: 768px) {
+    .footer-main {
+        grid-template-columns: 1fr; 
+        gap: 40px;
+    }
+    .footer-bottom-content {
+        flex-direction: column;
+        text-align: center;
+        justify-content: center;
+    }
+    .footer-left-utils {
+        flex-direction: column;
+        gap: 16px;
+    }
+    .app-download-buttons {
+        justify-content: flex-start;
+    }
+}

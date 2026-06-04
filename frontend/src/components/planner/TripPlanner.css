@@ -1,0 +1,142 @@
+
+.planner-split-layout {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr; 
+    gap: 30px;
+    margin-top: 20px;
+}
+
+@media(max-width: 1000px) {
+    .planner-split-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+.planner-left-side {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+
+.preview-section h3 {
+    color: #111827;
+    margin-bottom: 5px;
+    font-size: 20px;
+}
+
+.preview-subtitle {
+    color: #6b7280;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+.live-preview-box {
+    background: white;
+    border-radius: 20px;
+    padding: 24px;
+    min-height: 400px; /* Keeps the right side balanced with the form height */
+    box-shadow: 0 4px 18px rgba(0,0,0,0.03);
+    border: 1px solid #f1f5f9;
+}
+
+.preview-loading, .preview-empty {
+    height: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #94a3b8;
+    text-align: center;
+    padding: 20px;
+}
+
+.spin-icon { 
+    font-size: 32px; 
+    color: #4f46e5; 
+    animation: spin 1s linear infinite; 
+    margin-bottom: 15px; 
+}
+
+.empty-icon { 
+    font-size: 45px; 
+    color: #cbd5e1; 
+    margin-bottom: 15px; 
+}
+
+.preview-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-height: 500px;
+    overflow-y: auto;
+    padding-right: 5px; /* Space for scrollbar */
+}
+
+/* Compact Preview Card */
+.preview-card {
+    display: flex;
+    gap: 15px;
+    padding: 12px;
+    border: 1px solid #f1f5f9;
+    border-radius: 16px;
+    transition: 0.2s;
+    background: #ffffff;
+}
+
+.preview-card:hover { 
+    border-color: #e2e8f0; 
+    background: #f8fafc; 
+    transform: translateY(-2px);
+}
+
+.preview-card img {
+    width: 90px;
+    height: 90px;
+    border-radius: 12px;
+    object-fit: cover;
+}
+
+.preview-info { 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+}
+
+.preview-info h4 { 
+    margin: 0 0 5px 0; 
+    font-size: 15px; 
+    color: #1e293b; 
+}
+
+.preview-price { 
+    margin: 0 0 10px 0; 
+    font-weight: 700; 
+    color: #0f172a; 
+    font-size: 14px; 
+}
+
+.preview-price span { 
+    font-weight: 400; 
+    color: #64748b; 
+    font-size: 12px; 
+}
+
+.preview-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 8px;
+    border-radius: 6px;
+    width: fit-content;
+    text-transform: uppercase;
+}
+
+.preview-badge.hotel { background: #dbeafe; color: #2563eb; }
+.preview-badge.camp { background: #dcfce7; color: #16a34a; }
+
+@keyframes spin { 
+    100% { transform: rotate(360deg); } 
+}

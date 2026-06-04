@@ -1,0 +1,246 @@
+/* BACKGROUND WITH PROFESSIONAL DOT GRID (No longer blank!) */
+.mytrips-page {
+    min-height: 100vh;
+    background-color: #f1f5f9; /* Your old color */
+    background-image: radial-gradient(#cbd5e1 1px, transparent 1px); /* The Dot Grid Pattern */
+    background-size: 24px 24px;
+    padding: 50px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    font-family: 'Inter', system-ui, sans-serif;
+}
+
+/* MAIN CONTAINER */
+.mytrips-container {
+    width: 100%;
+    max-width: 900px;
+    background: white;
+    border-radius: 24px;
+    padding: 40px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06); /* Stronger shadow to pop against the dots */
+    border: 1px solid #e2e8f0;
+}
+
+/* TWO-SIDED BUTTON LAYOUT */
+.mytrips-top-actions {
+    display: flex;
+    justify-content: space-between; /* Puts them on exact opposite sides */
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+/* ORIGINAL BUTTON STYLES RESTORED */
+.back-btn {
+    border: 1px solid #dbeafe;
+    padding: 10px 20px;
+    border-radius: 12px;
+    background: white;
+    color: #0f172a;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.back-btn:hover {
+    background: #f8fafc;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.create-trip-btn {
+    border: none;
+    padding: 10px 24px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #4f46e5, #7c3aed); /* Your old gradient! */
+    color: white;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s ease;
+    box-shadow: 0 4px 15px rgba(79, 70, 229, 0.3);
+}
+
+.create-trip-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(79, 70, 229, 0.4);
+}
+
+/* TITLE SECTION */
+.mytrips-title {
+    margin-bottom: 35px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.mytrips-title h1 {
+    font-size: 32px;
+    color: #0f172a;
+    font-weight: 800;
+    margin-bottom: 8px;
+}
+
+.mytrips-title p {
+    color: #64748b;
+    font-size: 15px;
+}
+
+/* LIST LAYOUT */
+.mytrips-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px; 
+}
+
+.trip-row {
+    display: flex;
+    align-items: center;
+    padding: 16px;
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    transition: all 0.3s ease;
+}
+
+.trip-row:hover {
+    border-color: #cbd5e1;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.04);
+    transform: translateY(-2px); 
+}
+
+/* SMALL THUMBNAIL */
+.trip-row-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 12px;
+    object-fit: cover;
+    margin-right: 20px;
+}
+
+/* MIDDLE DETAILS */
+.trip-row-details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.trip-row-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 8px;
+}
+
+.trip-row-header h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #0f172a;
+}
+
+.status-dot {
+    font-size: 12px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.status-dot.planned { background: #eef2ff; color: #4338ca; }
+.status-dot.completed { background: #dcfce7; color: #15803d; }
+.status-dot.cancelled { background: #fee2e2; color: #b91c1c; }
+
+.trip-row-meta {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-size: 14px;
+    color: #64748b;
+}
+
+.trip-row-meta span {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.trip-row-meta svg {
+    color: #4f46e5;
+}
+
+.budget-tag {
+    background: #f8fafc;
+    padding: 4px 10px;
+    border-radius: 8px;
+    font-weight: 600;
+    color: #334155;
+    border: 1px solid #e2e8f0;
+}
+
+/* ICON BUTTONS */
+.trip-row-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.icon-btn {
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.2s;
+}
+
+.icon-btn.view {
+    background: #eef2ff;
+    color: #4f46e5;
+}
+
+.icon-btn.view:hover {
+    background: #4f46e5;
+    color: white;
+}
+
+.icon-btn.delete {
+    background: #fef2f2;
+    color: #ef4444;
+}
+
+.icon-btn.delete:hover {
+    background: #ef4444;
+    color: white;
+}
+
+/* SKELETON LOADING */
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+.skeleton {
+    background: #e2e8f0;
+    border-radius: 8px;
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.skeleton-header { height: 80px; width: 100%; margin-bottom: 30px; border-radius: 12px;}
+.skeleton-img-sm { width: 80px; height: 80px; border-radius: 12px; margin-right: 20px;}
+.skeleton-details { flex: 1; }
+.skeleton-title-sm { height: 20px; width: 180px; margin-bottom: 12px; }
+.skeleton-text-sm { height: 14px; width: 250px; }
+
+/* RESPONSIVE */
+@media(max-width: 650px) {
+    .mytrips-container { padding: 24px; }
+    .mytrips-top-actions { flex-direction: column-reverse; gap: 16px; align-items: stretch; }
+    .trip-row { flex-direction: column; align-items: flex-start; position: relative; }
+    .trip-row-img { width: 100%; height: 140px; margin-bottom: 16px; }
+    .trip-row-actions { position: absolute; top: 16px; right: 16px; background: rgba(255,255,255,0.9); padding: 6px; border-radius: 12px; }
+    .trip-row-meta { flex-direction: column; align-items: flex-start; gap: 10px; }
+}
