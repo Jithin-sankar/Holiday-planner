@@ -12,8 +12,7 @@ import {
     FaMagic,
     FaSpinner,
     FaHotel,
-    FaCampground,
-    FaStar
+    FaCampground
 } from 'react-icons/fa'
 
 import API from '../../api/api'
@@ -33,46 +32,62 @@ function TripDetails() {
 
     // ================= FETCH TRIP =================
     useEffect(() => {
-        fetchTrip()
-    }, [id])
+        let isActive = true
 
-    const fetchTrip = async () => {
-        try {
-            const res = await API.get(`trips/trips/${id}/`)
-            setTrip(res.data)
+        const fetchStays = async (city) => {
+            try {
+                setStaysLoading(true)
 
-            // FIX: correct itinerary binding
-            if (res.data.itinerary) {
-                setItinerary(res.data.itinerary)
+                const res = await API.get(
+                    `stay/?destination=${encodeURIComponent(city)}`
+                )
+
+                if (isActive) {
+                    setStays(res.data)
+                }
+
+            } catch (err) {
+                console.error('Stays error:', err)
+            } finally {
+                if (isActive) {
+                    setStaysLoading(false)
+                }
             }
-
-            const city = (res.data.destination || '').split(',')[0].trim()
-            fetchStays(city)
-
-        } catch (err) {
-            console.error('Trip load error:', err)
-        } finally {
-            setLoading(false)
         }
-    }
 
-    // ================= FETCH STAYS =================
-    const fetchStays = async (city) => {
-        try {
-            setStaysLoading(true)
+        const fetchTrip = async () => {
+            try {
+                const res = await API.get(`trips/trips/${id}/`)
 
-            const res = await API.get(
-                `stay/?destination=${encodeURIComponent(city)}`
-            )
+                if (!isActive) {
+                    return
+                }
 
-            setStays(res.data)
+                setTrip(res.data)
 
-        } catch (err) {
-            console.error('Stays error:', err)
-        } finally {
-            setStaysLoading(false)
+                // FIX: correct itinerary binding
+                if (res.data.itinerary) {
+                    setItinerary(res.data.itinerary)
+                }
+
+                const city = (res.data.destination || '').split(',')[0].trim()
+                fetchStays(city)
+
+            } catch (err) {
+                console.error('Trip load error:', err)
+            } finally {
+                if (isActive) {
+                    setLoading(false)
+                }
+            }
         }
-    }
+
+        fetchTrip()
+
+        return () => {
+            isActive = false
+        }
+    }, [id])
 
     // ================= GENERATE AI =================
     const generateItinerary = async () => {

@@ -19,22 +19,22 @@ function Budget() {
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
+        const fetchBudgets = async () => {
+            try {
+                const response = await API.get('trips/trips/')
+                const calculatedTotal = response.data.reduce((sum, trip) => {
+                    return sum + (parseFloat(trip.budget) || 0)
+                }, 0)
+                setTotalBudget(calculatedTotal)
+            } catch (error) {
+                console.error("Error fetching budget data:", error)
+            } finally {
+                setLoading(false)
+            }
+        }
+
         fetchBudgets()
     }, [])
-
-    const fetchBudgets = async () => {
-        try {
-            const response = await API.get('trips/trips/')
-            const calculatedTotal = response.data.reduce((sum, trip) => {
-                return sum + (parseFloat(trip.budget) || 0)
-            }, 0)
-            setTotalBudget(calculatedTotal)
-        } catch (error) {
-            console.error("Error fetching budget data:", error)
-        } finally {
-            setLoading(false)
-        }
-    }
 
     // Algorithmic breakdown with specific brand colors for the UI
     const expenses = [

@@ -1,11 +1,9 @@
-import React from 'react';
 import './Footer.css';
 import { 
     FaInstagram, 
     FaTwitter, 
     FaFacebookF, 
     FaYoutube, 
-    FaPaperPlane,
     FaGlobeAmericas,
     FaPhoneAlt,
     FaEnvelope,

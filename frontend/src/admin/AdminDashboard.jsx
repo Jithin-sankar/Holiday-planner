@@ -26,19 +26,19 @@ function AdminDashboard() {
     const [isUserModalOpen, setIsUserModalOpen] = useState(false);
 
     useEffect(() => {
+        const fetchAdminData = async () => {
+            try {
+                const response = await API.get('core-admin/stats/');
+                setAdminStats(response.data);
+            } catch {
+                setError("Access Denied. You do not have administrator privileges.");
+            } finally {
+                setLoading(false);
+            }
+        };
+
         fetchAdminData();
     }, []);
-
-    const fetchAdminData = async () => {
-        try {
-            const response = await API.get('core-admin/stats/');
-            setAdminStats(response.data);
-        } catch (err) {
-            setError("Access Denied. You do not have administrator privileges.");
-        } finally {
-            setLoading(false);
-        }
-    };
 
     const showMessage = (text, type = 'success') => {
         setNotification({ text, type });
@@ -60,7 +60,7 @@ function AdminDashboard() {
             if (selectedUser && selectedUser.id === userId) {
                 setSelectedUser(prev => ({ ...prev, is_active: response.data.is_active }));
             }
-        } catch (error) {
+        } catch {
             showMessage("Failed to update user status.", "error");
         }
     };
@@ -75,7 +75,7 @@ function AdminDashboard() {
             }));
             showMessage("User permanently deleted.");
             setIsUserModalOpen(false);
-        } catch (error) {
+        } catch {
             showMessage("Failed to delete user.", "error");
         }
     };
@@ -90,7 +90,7 @@ function AdminDashboard() {
                 recent_activity: prev.recent_activity.filter(trip => trip.id !== tripId)
             }));
             showMessage("Trip permanently deleted.");
-        } catch (error) {
+        } catch {
             showMessage("Failed to delete trip.", "error");
         }
     };

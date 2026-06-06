@@ -164,7 +164,7 @@ function VerifyOTP() {
                 response.data.message
             )
 
-        } catch (error) {
+        } catch {
 
             setError(
                 'Failed to resend OTP'

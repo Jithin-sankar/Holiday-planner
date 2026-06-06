@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useCallback, useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import API from '../../api/api'
@@ -34,25 +34,7 @@ function TripPlanner() {
     const [liveStays, setLiveStays] = useState([])
     const [loadingStays, setLoadingStays] = useState(false)
 
-    // --- THE LISTENER HOOK ---
-    // This watches the destination input and fetches data when the user stops typing
-    useEffect(() => {
-        if (formData.destination.trim().length >= 3) {
-            // Clean the input (e.g., "Goa, India" -> "Goa")
-            const cleanCityName = formData.destination.split(',')[0].trim();
-            
-            // Debounce: Wait 500ms after typing stops before searching
-            const delayDebounceFn = setTimeout(() => {
-                fetchLiveStays(cleanCityName);
-            }, 500);
-
-            return () => clearTimeout(delayDebounceFn);
-        } else {
-            setLiveStays([]); // Clear if input is too short or empty
-        }
-    }, [formData.destination]);
-
-    const fetchLiveStays = async (city) => {
+    const fetchLiveStays = useCallback(async (city) => {
         try {
             setLoadingStays(true);
             const response = await API.get(`stay/?destination=${encodeURIComponent(city)}`);
@@ -62,14 +44,36 @@ function TripPlanner() {
         } finally {
             setLoadingStays(false);
         }
-    };
+    }, []);
+
+    // --- THE LISTENER HOOK ---
+    // This watches the destination input and fetches data when the user stops typing
+    useEffect(() => {
+        if (formData.destination.trim().length < 3) {
+            return
+        }
+
+        // Clean the input (e.g., "Goa, India" -> "Goa")
+        const cleanCityName = formData.destination.split(',')[0].trim();
+
+        // Debounce: Wait 500ms after typing stops before searching
+        const delayDebounceFn = setTimeout(() => {
+            fetchLiveStays(cleanCityName);
+        }, 500);
+
+        return () => clearTimeout(delayDebounceFn);
+    }, [fetchLiveStays, formData.destination]);
 
     // --- HANDLERS ---
     const handleChange = (e) => {
-        setFormData({
-            ...formData,
+        setFormData((currentFormData) => ({
+            ...currentFormData,
             [e.target.name]: e.target.value
-        })
+        }))
+
+        if (e.target.name === 'destination' && e.target.value.trim().length < 3) {
+            setLiveStays([])
+        }
     }
 
     const handleSubmit = async () => {

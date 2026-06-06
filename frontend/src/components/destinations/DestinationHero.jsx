@@ -2,7 +2,7 @@ import './DestinationHero.css'
 import { FaRobot, FaTree, FaStar, FaArrowLeft } from 'react-icons/fa'
 import { useNavigate } from 'react-router-dom'
 
-function DestinationHero({ itinerary, trip }) {
+function DestinationHero({ trip }) {
     const navigate = useNavigate();
 
     return (

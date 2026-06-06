@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom'
 
 import API from '../api/api'
 
-import '../auth/register.css'
+import '../auth/Register.css'
 
 
 function Register() {

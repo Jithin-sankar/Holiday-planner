@@ -10,24 +10,24 @@ function MyTrips() {
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
+        const fetchTrips = async () => {
+            try {
+                const response = await API.get('trips/trips/')
+                setTrips(response.data)
+            } catch (err) {
+                console.error(err)
+            } finally {
+                setLoading(false)
+            }
+        }
+
         fetchTrips()
     }, [])
-
-    const fetchTrips = async () => {
-        try {
-            const response = await API.get('trips/trips/')
-            setTrips(response.data)
-        } catch (err) {
-            console.error(err)
-        } finally {
-            setLoading(false)
-        }
-    }
 
     const deleteTrip = async (id) => {
         try {
             await API.delete(`trips/trips/${id}/`)
-            setTrips(trips.filter((trip) => trip.id !== id))
+            setTrips((currentTrips) => currentTrips.filter((trip) => trip.id !== id))
         } catch (err) {
             console.error(err)
         }

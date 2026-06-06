@@ -21,7 +21,6 @@ import Destinations from '../components/destinations/Destinations'
 import Bookings from '../components/booking/Bookings'
 import Budget from '../components/Budget/Budget'
 
-import admin from '../admin/AdminDashboard'
 import AdminDashboard from '../admin/AdminDashboard'
 
 function AppRoutes() {

@@ -25,7 +25,7 @@ function Avatar({ user, onImageChange }) {
   const avatarSrc = user?.profile_image
     ? user.profile_image.startsWith('blob:')
       ? user.profile_image
-      : `http://localhost:8000${user.profile_image}`
+      : API.getMediaUrl(user.profile_image)
     : `https://api.dicebear.com/7.x/initials/svg?seed=${encodeURIComponent(
         user?.full_name || 'U'
       )}&backgroundColor=2563eb&textColor=ffffff`
@@ -123,34 +123,33 @@ export default function Profile() {
 
 
   useEffect(() => {
+    const fetchAllData = async () => {
+      try {
+        const profileRes = await API.get('accounts/profile/')
+        const profileData = profileRes.data
+
+        setUser(profileData)
+
+        setFormData({
+          full_name: profileData.full_name || '',
+          email: profileData.email || '',
+          phone: profileData.phone || '',
+          location: profileData.location || '',
+        })
+
+        const tripsRes = await API.get('trips/trips/')
+        setTrips(tripsRes.data)
+
+      } catch (err) {
+        console.error(err)
+        setError('Failed to load profile data.')
+      } finally {
+        setLoading(false)
+      }
+    }
+
     fetchAllData()
   }, [])
-
-
-  const fetchAllData = async () => {
-    try {
-      const profileRes = await API.get('accounts/profile/')
-      const profileData = profileRes.data
-
-      setUser(profileData)
-
-      setFormData({
-        full_name: profileData.full_name || '',
-        email: profileData.email || '',
-        phone: profileData.phone || '',
-        location: profileData.location || '',
-      })
-
-      const tripsRes = await API.get('trips/trips/')
-      setTrips(tripsRes.data)
-
-    } catch (err) {
-      console.error(err)
-      setError('Failed to load profile data.')
-    } finally {
-      setLoading(false)
-    }
-  }
 
   const handleUpdateProfile = async () => {
     try {
@@ -217,10 +216,10 @@ export default function Profile() {
 
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
+    setFormData((currentFormData) => ({
+      ...currentFormData,
       [e.target.name]: e.target.value,
-    })
+    }))
   }
 
 

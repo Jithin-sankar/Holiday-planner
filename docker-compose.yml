@@ -1,0 +1,59 @@
+services:
+
+  db:
+    image: postgres:17
+
+    environment:
+      POSTGRES_DB: holiday_planner
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: jithin
+
+    ports:
+      - "5432:5432"
+
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d holiday_planner"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+
+  backend:
+    build:
+      context: ./backend/Server
+
+    ports:
+      - "8000:8000"
+
+    env_file:
+      - ./backend/Server/.env
+
+    environment:
+      DB_HOST: db
+      DB_PORT: 5432
+      ALLOWED_HOSTS: localhost,127.0.0.1,0.0.0.0,backend
+
+    depends_on:
+      db:
+        condition: service_healthy
+
+
+  frontend:
+    build:
+      context: ./frontend
+
+    ports:
+      - "5173:5173"
+
+    environment:
+      VITE_API_BASE_URL: http://localhost:8000/api
+
+    depends_on:
+      - backend
+
+
+volumes:
+  postgres_data:
