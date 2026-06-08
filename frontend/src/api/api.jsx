@@ -1,12 +1,11 @@
 import axios from "axios";
 
-const BASE_URL = "http://localhost:8000";
+const BASE_URL = "http://3.110.85.126:8000";
 
 const API = axios.create({
-    baseURL: BASE_URL + "/api/",
+    baseURL: `${BASE_URL}/api/`,
     withCredentials: true,
 });
-
 
 API.getMediaUrl = (path) => {
     if (!path) return "";
