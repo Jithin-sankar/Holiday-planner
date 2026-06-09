@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "http://3.110.85.126:8000";
+const BASE_URL = "https://api.holidayplanner.abrdns.com";
 
 const API = axios.create({
     baseURL: `${BASE_URL}/api/`,
