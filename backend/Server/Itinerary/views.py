@@ -37,7 +37,7 @@ class GenerateItineraryAPIView(APIView):
             defaults={
                 "day_plan": ai_response,
                 "destination_image": trip.image,
-                "ai_model": "gemini-2.5-flash"
+                "ai_model": "gemini-1.5-flash"
             }
         )
 
