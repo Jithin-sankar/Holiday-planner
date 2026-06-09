@@ -124,7 +124,7 @@ def gemini_node(state: TravelState):
 
         response = client.models.generate_content(
 
-            model="gemini-1.5-flash",
+            model="gemini-2.5-flash",
 
             contents=state["prompt"]
         )
