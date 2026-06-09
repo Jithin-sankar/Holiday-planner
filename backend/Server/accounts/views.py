@@ -100,13 +100,12 @@ class VerifyOTPView(APIView):
                     "id": user.id,
                     "full_name": user.full_name,
                     "email": user.email,
-                    
-                    "is_admin": user.is_superuser 
+                    "is_admin": user.is_superuser
                 }
             })
 
-            response.set_cookie("access_token", str(refresh.access_token), httponly=True, samesite='Lax')
-            response.set_cookie("refresh_token", str(refresh), httponly=True, samesite='Lax')
+            response.set_cookie("access_token", str(refresh.access_token), httponly=True, samesite='None', secure=True)
+            response.set_cookie("refresh_token", str(refresh), httponly=True, samesite='None', secure=True)
 
             return response
 
@@ -159,13 +158,12 @@ class LoginView(APIView):
                     "id": user.id,
                     "full_name": user.full_name,
                     "email": user.email,
-                   
-                    "is_admin": user.is_superuser 
+                    "is_admin": user.is_superuser
                 }
             })
 
-            response.set_cookie("access_token", str(refresh.access_token), httponly=True, samesite='Lax')
-            response.set_cookie("refresh_token", str(refresh), httponly=True, samesite='Lax')
+            response.set_cookie("access_token", str(refresh.access_token), httponly=True, samesite='None', secure=True)
+            response.set_cookie("refresh_token", str(refresh), httponly=True, samesite='None', secure=True)
 
             return response
 
@@ -210,13 +208,12 @@ class GoogleLoginView(APIView):
                     "id": user.id,
                     "full_name": user.full_name,
                     "email": user.email,
-                   
-                    "is_admin": user.is_superuser 
+                    "is_admin": user.is_superuser
                 }
             })
 
-            response.set_cookie("access_token", str(refresh.access_token), httponly=True, samesite='Lax')
-            response.set_cookie("refresh_token", str(refresh), httponly=True, samesite='Lax')
+            response.set_cookie("access_token", str(refresh.access_token), httponly=True, samesite='None', secure=True)
+            response.set_cookie("refresh_token", str(refresh), httponly=True, samesite='None', secure=True)
 
             return response
 
@@ -296,16 +293,15 @@ class LogoutView(APIView):
         response.delete_cookie("access_token")
         response.delete_cookie("refresh_token")
         return response
-    
+
 
 class ProfileView(APIView):
     permission_classes = [IsAuthenticated]
-    parser_classes = (MultiPartParser,FormParser,JSONParser)
+    parser_classes = (MultiPartParser, FormParser, JSONParser)
 
     def get(self, request):
         serializer = UserSerializer(request.user)
         data = serializer.data
-    
         data['is_admin'] = request.user.is_superuser
         return Response(data)
 
@@ -316,7 +312,6 @@ class ProfileView(APIView):
         if serializer.is_valid():
             serializer.save()
             data = serializer.data
-           
             data['is_admin'] = user.is_superuser
             return Response(data, status=status.HTTP_200_OK)
 

@@ -44,7 +44,7 @@ class LoginSerializer(serializers.Serializer):
 
     def validate(self, data):
         user = authenticate(
-            email=data['email'],
+            username=data['email'], 
             password=data['password']
         )
 
@@ -53,7 +53,6 @@ class LoginSerializer(serializers.Serializer):
                 "Invalid Credentials"
             )
 
-        # ✨ THE FIX: We added 'and not user.is_superuser' right here
         if not user.is_verified and not user.is_superuser:
             raise serializers.ValidationError(
                 "Please Verify OTP First"
@@ -82,7 +81,6 @@ class UserSerializer(serializers.ModelSerializer):
         fields = [
             'id',
             'full_name',
-            'username',
             'email',
             'phone',
             'location',

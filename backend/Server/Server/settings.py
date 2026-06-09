@@ -202,3 +202,5 @@ UNSPLASH_ACCESS_KEY = os.getenv("UNSPLASH_ACCESS_KEY")
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 
 SERP_API_KEY = os.getenv("SERP_API_KEY")
+
+SECURE_CROSS_ORIGIN_OPENER_POLICY = 'same-origin-allow-popups'
